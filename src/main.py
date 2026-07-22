@@ -3,7 +3,7 @@ import sys
 
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile, QIODevice
+from PySide6.QtCore import QFile, QIODevice, Qt
 from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout, QWidget
 
 # custom widget imports
@@ -58,6 +58,7 @@ class MainApplication(QApplication):
 
         # Optional
         self.scroll_layout.setSpacing(10)
+        self.scroll_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.scroll_layout.setContentsMargins(10, 10, 10, 10)
 
         # Tell the scroll area to use it

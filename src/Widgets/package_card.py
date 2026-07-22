@@ -4,7 +4,7 @@ import sys
 # importing pyside files
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
-from PySide6.QtWidgets import QWidget, QLabel, QComboBox
+from PySide6.QtWidgets import QWidget, QLabel, QComboBox, QSizePolicy
 
 # the package card class
 class PackageCard(QWidget):
@@ -24,6 +24,12 @@ class PackageCard(QWidget):
         loader = QUiLoader()
         loader.load(ui_file, self)
         ui_file.close()
+
+        self.setSizePolicy(
+            QSizePolicy.Policy.Expanding,
+            QSizePolicy.Policy.Fixed
+        )
+        self.setFixedHeight(250)
 
         # getting important components like, name, description, and version widgets
         self.name_lable = self.findChild(QLabel, "Name")

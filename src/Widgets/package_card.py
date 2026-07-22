@@ -34,7 +34,7 @@ class PackageCard(QWidget):
         self.package_name = name
         self.name_lable.setText(self.package_name)
 
-    def set_name(self, desc):
+    def set_description(self, desc):
         self.description_lable.setText(desc)
 
     def set_versions(self, vers):

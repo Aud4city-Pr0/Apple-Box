@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>600</height>
+    <height>686</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -74,13 +74,13 @@
      </property>
     </widget>
    </widget>
-   <widget class="QScrollArea" name="PackagesFrame">
+   <widget class="QScrollArea" name="DescriptionFrame">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>70</y>
-      <width>671</width>
-      <height>471</height>
+      <x>10</x>
+      <y>90</y>
+      <width>661</width>
+      <height>531</height>
      </rect>
     </property>
     <property name="horizontalScrollBarPolicy">
@@ -97,8 +97,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>671</width>
-       <height>471</height>
+       <width>661</width>
+       <height>531</height>
       </rect>
      </property>
     </widget>

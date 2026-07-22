@@ -31,15 +31,9 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>671</width>
-      <height>71</height>
+      <width>681</width>
+      <height>81</height>
      </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
     </property>
     <widget class="QLineEdit" name="SearchBar">
      <property name="geometry">
@@ -90,10 +84,10 @@
    <widget class="QScrollArea" name="DescriptionFrame">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>661</width>
-      <height>531</height>
+      <x>0</x>
+      <y>80</y>
+      <width>671</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="horizontalScrollBarPolicy">
@@ -110,8 +104,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>661</width>
-       <height>531</height>
+       <width>671</width>
+       <height>551</height>
       </rect>
      </property>
     </widget>

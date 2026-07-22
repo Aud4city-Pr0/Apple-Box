@@ -4,7 +4,7 @@ import sys
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
-from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton
+from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout
 
 # custom widget imports
 
@@ -40,6 +40,7 @@ class MainApplication(QApplication):
         self.search_box = self.window.findChild(QLineEdit, "SearchBar")
         self.filter_box = self.window.findChild(QComboBox, "Filters")
         self.find_btn = self.window.findChild(QPushButton, "FindButton")
+        self.scroll_area = self.window.findChild(QScrollArea, "DescriptionFrame")
 
         # setting up widgets and events
         filter_opitions = ["Installed", "Not Installed", "A-Z", "Z-A"]
@@ -48,6 +49,17 @@ class MainApplication(QApplication):
         self.filter_box.setCurrentIndex(1)
         self.search_box.editingFinished.connect(self.on_search_finished)
         self.find_btn.pressed.connect(self.on_search_finished)
+
+        # Create a vertical layout
+        self.scroll_layout = QVBoxLayout(self.scroll_container)
+
+        # Optional
+        self.scroll_layout.setSpacing(10)
+        self.scroll_layout.setContentsMargins(10, 10, 10, 10)
+
+        # Tell the scroll area to use it
+        self.scroll_area.setWidget(self.scroll_container)
+        self.scroll_area.setWidgetResizable(True)
 
         # showing window
         self.window.show()

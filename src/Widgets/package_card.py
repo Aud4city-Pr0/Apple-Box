@@ -8,7 +8,7 @@ from PySide6.QtWidgets import QWidget, QLabel, QComboBox
 
 # the package card class
 class PackageCard(QWidget):
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.package_name = ""
         self.versions = []
@@ -22,13 +22,13 @@ class PackageCard(QWidget):
         
         # using PySide6's ui loader
         loader = QUiLoader()
-        self.card_ui = loader.load(ui_file)
+        loader.load(ui_file, self)
         ui_file.close()
 
         # getting important components like, name, description, and version widgets
-        self.name_lable = self.card_ui.findChild(QLabel, "Name")
-        self.description_lable = self.card_ui.findChild(QLabel, "Description")
-        self.versions_box = self.card_ui.findChild(QComboBox, "VersionsBox")
+        self.name_lable = self.findChild(QLabel, "Name")
+        self.description_lable = self.findChild(QLabel, "Description")
+        self.versions_box = self.findChild(QComboBox, "VersionsBox")
 
     def set_name(self, name):
         self.package_name = name

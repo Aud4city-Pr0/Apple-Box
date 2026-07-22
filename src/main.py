@@ -4,10 +4,10 @@ import sys
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
-from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout, QWidget
 
 # custom widget imports
-
+from Widgets.package_card import PackageCard
 
 # custom application module imports
 
@@ -34,7 +34,7 @@ class MainApplication(QApplication):
             sys.exit(-1)
 
         # setting up window
-        self.window.setFixedSize(650, 590)
+        self.window.setFixedSize(674, 686)
 
         # getting widgets
         self.search_box = self.window.findChild(QLineEdit, "SearchBar")
@@ -49,6 +49,9 @@ class MainApplication(QApplication):
         self.filter_box.setCurrentIndex(1)
         self.search_box.editingFinished.connect(self.on_search_finished)
         self.find_btn.pressed.connect(self.on_search_finished)
+
+        # Create the widget that will live inside the scroll area
+        self.scroll_container = QWidget()
 
         # Create a vertical layout
         self.scroll_layout = QVBoxLayout(self.scroll_container)
@@ -67,6 +70,11 @@ class MainApplication(QApplication):
     def on_search_finished(self):
         if self.search_box.text() != "":
             print(self.search_box.text())
+            new_card = PackageCard()
+            new_card.set_description("Test")
+            new_card.set_name("package")
+            new_card.set_versions(["1", "2", "3", "4"])
+            self.scroll_layout.addWidget(new_card)
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ import sys
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
-from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox
+from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton
 
 # custom widget imports
 
@@ -39,6 +39,7 @@ class MainApplication(QApplication):
         # getting widgets
         self.search_box = self.window.findChild(QLineEdit, "SearchBar")
         self.filter_box = self.window.findChild(QComboBox, "Filters")
+        self.find_btn = self.window.findChild(QPushButton, "FindButton")
 
         # setting up widgets and events
         filter_opitions = ["Installed", "Not Installed", "A-Z", "Z-A"]
@@ -46,12 +47,14 @@ class MainApplication(QApplication):
             self.filter_box.addItem(fliter_op)
         self.filter_box.setCurrentIndex(1)
         self.search_box.editingFinished.connect(self.on_search_finished)
+        self.find_btn.pressed.connect(self.on_search_finished)
 
         # showing window
         self.window.show()
 
     def on_search_finished(self):
-        print(self.search_box.text())
+        if self.search_box.text() != "":
+            print(self.search_box.text())
 
 
 if __name__ == "__main__":

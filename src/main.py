@@ -1,5 +1,5 @@
 # importing other python librarys
-import sys
+import sys, platform
 
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
@@ -18,7 +18,11 @@ class MainApplication(QApplication):
         super().__init__()
 
         # loading our ui
-        ui_file = QFile("Ui//Main.ui")
+        match platform.system():
+            case "Windows":
+              ui_file = QFile("Ui\\Main.ui")
+            case "Linux":
+              ui_file = QFile("Ui/Main.ui")  
         if not ui_file.open(QFile.ReadOnly):
             # error has occured
             print(f"Oh noes! ;( looks like the file: {ui_file.fileName()}, could not be loaded because of error: {ui_file.errorString()}")

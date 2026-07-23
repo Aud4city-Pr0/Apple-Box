@@ -77,10 +77,12 @@ class MainApplication(QApplication):
             print(self.search_box.text())
             new_card = PackageCard()
             package_information = pip_manager.get_package_information(self.search_box.text())
-            # checking to make sure we are not getting an error string, but a tuple value
-            if type(package_information) != str:
-                new_card.set_name(package_information[0])
-                new_card.set_versions()
+            project, versions = package_information[0]
+            if package_information:
+                new_card.set_name(project)
+                new_card.set_versions(versions)
+            else:
+                QMessageBox.critical(self, "Error occured", "Error: " + package_information)
             #new_card.set_description("Test")
             #new_card.set_name("package")
             #new_card.set_versions(["1", "2", "3", "4"])

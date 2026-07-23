@@ -12,7 +12,11 @@ def get_package_information(package_name):
     try:
         # getting package
         package_page = client.get_project_page(package_name)
-        for info in package_page.packages:
-            return (package_page.project, info.version)
+        # Build a list of tuples for ALL versions found
+        results = [
+            (package_page.project, info.version) 
+            for info in package_page.packages
+        ]
+        return results
     except NoSuchProjectError:
-        return "The package, " + package_page + "could not be found!"
+        return "The package, " + package_name + "could not be found!"

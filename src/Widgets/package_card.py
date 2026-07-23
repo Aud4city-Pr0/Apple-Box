@@ -45,8 +45,6 @@ class PackageCard(QWidget):
 
     def set_versions(self, vers):
         self.versions = vers
-        for ver in self.versions:
-            print(f"Version: {ver}")
-            self.versions_box.addItem("Version: " + ver)
+        self.versions_box.addItems(vers)
 
     

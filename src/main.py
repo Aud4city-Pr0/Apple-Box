@@ -4,13 +4,13 @@ import sys, platform
 # importing pyside6 estensials
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice, Qt
-from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QApplication, QLineEdit, QComboBox, QPushButton, QScrollArea, QVBoxLayout, QWidget, QMessageBox
 
 # custom widget imports
 from Widgets.package_card import PackageCard
 
 # custom application module imports
-
+from libs import pip_manager
 
 # the main applicarion loop
 class MainApplication(QApplication):
@@ -76,9 +76,14 @@ class MainApplication(QApplication):
         if self.search_box.text() != "":
             print(self.search_box.text())
             new_card = PackageCard()
-            new_card.set_description("Test")
-            new_card.set_name("package")
-            new_card.set_versions(["1", "2", "3", "4"])
+            package_information = pip_manager.get_package_information(self.search_box.text())
+            # checking to make sure we are not getting an error string, but a tuple value
+            if type(package_information) != str:
+                new_card.set_name(package_information[0])
+                new_card.set_versions()
+            #new_card.set_description("Test")
+            #new_card.set_name("package")
+            #new_card.set_versions(["1", "2", "3", "4"])
             self.scroll_layout.addWidget(new_card)
 
 

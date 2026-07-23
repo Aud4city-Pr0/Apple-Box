@@ -14,7 +14,7 @@ class PackageCard(QWidget):
         self.versions = []
 
         # loading ui
-        ui_file = QFile("src/Ui/PackageCard.ui")
+        ui_file = QFile("Ui/PackageCard.ui")
         if not ui_file.open(QFile.ReadOnly):
             # error has occured
             print(f"Oh noes! ;( looks like the file: {ui_file.fileName()}, could not be loaded because of error: {ui_file.errorString()}")

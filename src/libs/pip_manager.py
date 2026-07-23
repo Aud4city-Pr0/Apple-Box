@@ -17,6 +17,7 @@ def get_package_information(package_name):
             (package_page.project, info.version) 
             for info in package_page.packages
         ]
+        print(results)
         return results
     except NoSuchProjectError:
         return "The package, " + package_name + "could not be found!"

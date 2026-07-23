@@ -20,9 +20,9 @@ class MainApplication(QApplication):
         # loading our ui
         match platform.system():
             case "Windows":
-              ui_file = QFile("Ui\\Main.ui")
+              ui_file = QFile("src\\Ui\\Main.ui")
             case "Linux":
-              ui_file = QFile("Ui/Main.ui")  
+              ui_file = QFile("src/Ui/Main.ui")  
         if not ui_file.open(QFile.ReadOnly):
             # error has occured
             print(f"Oh noes! ;( looks like the file: {ui_file.fileName()}, could not be loaded because of error: {ui_file.errorString()}")

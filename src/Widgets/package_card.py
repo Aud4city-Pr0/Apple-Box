@@ -1,6 +1,6 @@
 # other python modules
 import sys
-
+import platform
 # importing pyside files
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
@@ -14,7 +14,11 @@ class PackageCard(QWidget):
         self.versions = []
 
         # loading ui
-        ui_file = QFile("Ui//PackageCard.ui")
+        match platform.system():
+            case "Windows":
+                ui_file = QFile("src\\Ui\\PackageCard.ui")
+            case "Linux":
+                ui_file = QFile("src/UI/PackageCard.ui")
         if not ui_file.open(QFile.ReadOnly):
             # error has occured
             print(f"Oh noes! ;( looks like the file: {ui_file.fileName()}, could not be loaded because of error: {ui_file.errorString()}")
